@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Lead</title>
+  <style>
+    /* Reset some default styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fc;
+    }
+
+    /* Main container for the form */
+    .form-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .form-grid div {
+      width: calc(50% - 10px);
+    }
+
+    /* Styling for labels */
+    label {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .required::after {
+      content: ' *';
+      color: red;
+    }
+
+    /* Input fields */
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #5a67d8;
+      outline: none;
+    }
+
+    /* Button Styling */
+    .form-actions input[type="submit"] {
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-actions input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    /* Styling for the hidden fields */
+    .hidden {
+      display: none;
+    }
+
+    /* Responsive design for smaller screens */
+    @media screen and (max-width: 600px) {
+      .form-grid div {
+        width: 100%;
+      }
+    }
+
+    /* Styling for table-like layout */
+    table {
+      width: 100%;
+      border-spacing: 0;
+      margin-bottom: 20px;
+    }
+
+    table td {
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    table input,
+    table select,
+    table textarea {
+      width: 100%;
+    }
+
+    /* Add a section break for large inputs */
+    .form-container .section-break {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>New Lead Form</h1>
+    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDz000001qi9o" method="POST">
+      <input type="hidden" name="oid" value="00DDz000001qi9o">
+      <input type="hidden" name="retURL" value="https://ppg--ppgdev.sandbox.lightning.force.com">
+
+      <div class="form-grid">
+        <div>
+          <label for="first_name" class="required">Contact First Name</label>
+          <input id="first_name" maxlength="25" name="first_name" type="text" required>
+        </div>
+        <div>
+          <label for="last_name" class="required">Contact Last Name</label>
+          <input id="last_name" maxlength="25" name="last_name" type="text" required>
+        </div>
+        <div>
+          <label for="company" class="required">Company</label>
+          <input id="company" maxlength="40" name="company" type="text" required>
+        </div>
+        <div>
+          <label for="email" class="required">Email</label>
+          <input id="email" maxlength="80" name="email" type="email" required>
+        </div>
+        <div>
+          <label for="mobile">Mobile</label>
+          <input id="mobile" maxlength="10" name="mobile" type="tel">
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" maxlength="10" name="phone" type="tel">
+        </div>
+
+        <div class="section-break">
+          <label for="lead_source">Lead Source</label>
+          <select id="lead_source" name="lead_source">
+            <option value="Website" selected>Website</option>
+            <option value="Self-discovered / Sales call">Self-discovered / Sales call</option>
+            <option value="Trade Show / Event">Trade Show / Event</option>
+            <option value="Customer Service">Customer Service</option>
+            <option value="Marketing Campaigns">Marketing Campaigns</option>
+            <option value="Referral (customer / Partner / Employee)">Referral (customer / Partner / Employee)</option>
+            <option value="3rd party database">3rd party database</option>
+            <option value="LinkedIn Sales Navigator">LinkedIn Sales Navigator</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="rating">Rating</label>
+          <select id="rating" name="rating">
+            <option value="Hot" selected>Hot</option>
+            <option value="Warm">Warm</option>
+            <option value="Cold">Cold</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="street">Street</label>
+          <textarea name="street"></textarea>
+        </div>
+        <div>
+          <label for="city">City</label>
+          <input id="city" maxlength="40" name="city" type="text">
+        </div>
+        <div>
+          <label for="state">State/Province</label>
+          <input id="state" maxlength="20" name="state" type="text">
+        </div>
+        <div>
+          <label for="country">Country</label>
+          <input id="country" maxlength="40" name="country" type="text">
+        </div>
+        <div>
+          <label for="zip">Zip Code</label>
+          <input id="zip" maxlength="20" name="zip" type="text">
+        </div>
+        <div>
+          <label for="description">Comments</label>
+          <textarea name="description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
